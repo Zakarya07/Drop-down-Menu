@@ -1,0 +1,381 @@
+@import "font";
+@import "utilities";
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Neuropolitical";
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 255, 255);   
+}
+
+
+header { 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    @include phone{
+        height: auto;
+        width: 100%;
+        overflow: hidden;
+
+    }
+
+    // Navbar
+    nav {
+        background-color: black;
+        height: 7vh;
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: space-around;
+        filter: contrast(150%);
+        padding: 1vh 0;
+        z-index: 1;
+
+
+        @include laptop(){
+            width: 100%;
+        }
+
+        @include phone {
+            height: auto;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        // Logo Image 
+        a{
+
+            img#logo {
+                height: 80%;
+                cursor: pointer;
+                transition: filter .5s linear;
+    
+                &:hover {
+                    filter: hue-rotate(340deg);
+                }
+            }
+            @include phone{
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        // General styling of  all the button
+        button {
+            border: none;
+            padding: .5em 2em;
+            border-radius: 2px;
+            font-size: 1.15em;
+            background-color:transparent;
+            cursor: pointer;
+            color: rgb(255, 255, 255);
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        // Home button
+        & button:nth-child(2) {
+            background-color: #d0ceb9;
+            transition: all .5s ease-out;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            @include phone{
+                display:none;
+            }
+
+            &:hover {
+                background-color: #BCbbb1;
+            }
+
+            a {
+                color: teal;
+            }
+        }
+
+        // Dropdown buttons for Gender and Products
+
+        div.gender_category,
+        div.product_category {
+            position: relative;
+            height: 100%;
+            display: flex;
+            transition: all .5s linear;
+
+            @include phone {
+                height: auto;
+                font-size: .95em;
+            }
+        }
+
+        ul.gender_list,
+        ul.products_list {
+            position: absolute;
+            left: 0;
+            top: calc(100% + 2px);
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #000000;
+            border-radius: 1px;
+            transition: all .5s linear;          
+            display: none;  
+
+            li {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                border: 1px solid white;
+                padding: .25em;
+
+                &:hover {
+                    outline: 2px solid white;
+                    outline-offset: -5px;
+                }
+
+                &:hover a {
+                    color: red;
+                }
+
+                a {
+                    color: whitesmoke;
+                    text-decoration: none;
+                    font-size: 1.25em;
+                    padding: .5em 0;
+
+                    @include phone{
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // Hero Section Container 
+    section.images_container {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        height: 95vh;
+        gap: 2em;
+        padding: 0 2em;
+
+        @include laptop{
+            gap: 1em;
+            padding: 0;
+        }
+
+        @include phone{
+            height: auto;
+            flex-direction: column;
+            gap: 0;
+            width: 100%;
+        }
+
+        // Man Section (left)
+        .man_section {
+            background: url("../Images/man.jpg") no-repeat center 50%;
+            padding: 5vh 0;
+            background-size: cover;
+            width:50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            filter: grayscale(92.5%);
+            box-shadow: 5px 0px 5px 1px rgba(0, 0, 0, 0.25);
+            transition:filter 1s linear , box-shadow 1s linear .5s;
+
+            @include laptop{
+                align-items:center;
+            }
+            
+            @include phone{
+                width: 100%;
+                min-height: 75vh;
+            }
+            
+            &:hover {
+                filter: grayscale(0%);
+                box-shadow: 2px 0px 5px rgba(255, 192, 1, 0.5);
+            }
+
+            h1 {
+                align-self: flex-end;
+                font-size: 3em;
+                letter-spacing: 1px;
+                width: 100%;
+                background: inherit;
+                filter: hue-rotate(330deg);
+                background-position: center 95%;
+                text-align: center;
+                padding: 1vh;
+                color: white;
+
+                @include laptop{
+                    padding: 0;
+                    align-self: unset;
+                    order: 1;
+                    font-size: 2.5em;
+                }
+
+                @include tablet{
+                    font-size: 3em;
+                }
+                @include phone{
+                    font-size: 2.5em;
+                    color: orange;
+                    background-position: center top;
+                    text-shadow: 1px 3px 5px black;
+                }
+            }
+
+            button {
+                min-width: 20%;
+                height: 4.75vh;
+                padding: 0.5em 1.25em;
+                font-size: 1.5em;
+                background-color: rgb(0, 0, 0);
+                color: white;
+                border: none;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                cursor: pointer;
+                transition: all .35s linear;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &:focus {
+                    outline: none;
+                }
+
+                img {
+                    height:100%;
+                    background-color: #e2e1a4;
+                }
+            }
+
+
+        }
+
+        // Woman Section (right)
+        .woman_section {
+            background: url("../Images/woman_1.jpg") no-repeat center 12.5%;
+            background-size: cover;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            transition: box-shadow .5s linear .5s, filter 1s linear 1s, background .5s linear .1s;
+            box-shadow: 5px 0px 5px -3px rgba(161, 7, 7, 0.5);
+            
+            @include phone{
+                width: 100%;
+                min-height: 75vh;
+            }
+
+            &:hover {
+                background: url("../Images/woman_2.jpg") no-repeat center 12.5%;
+                background-size: cover;
+                filter: contrast(125%) brightness(90%);
+                box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.5);
+            }
+
+            h1 {
+                align-self: center;
+                font-size: 3em;
+                letter-spacing: 1px;
+                width: 100%;
+                background: inherit;
+                filter: hue-rotate(50deg);
+                background-position: center 95%;
+                text-align: center;
+                color: white;
+                order: 1;
+                padding: 1vh;
+
+                @include phone{
+                    padding: 0;
+                    font-size: 2.5em;
+                    color:rgb(0, 0, 0) ;
+                    text-shadow: 1px 2px 1px #b8003d;
+                }
+            }
+
+            button {
+                min-width: 20%;
+                height: 4.5vh;
+                padding: 0.5em 1.25em;
+                font-size: 1.25em;
+                background-color: rgb(0, 0, 0);
+                color: white;
+                border: none;
+                border-radius: 30px;
+                display: flex;
+                align-items: center;
+                align-self: flex-end;
+                justify-content: space-around;
+                cursor: pointer;
+                transition: all .35s linear;
+                overflow: hidden;
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: inset 0px 1px 2px red, inset 0px -1px 2px rgb(255, 142, 142);
+                }
+
+                & i {
+                    transform: rotateZ(0deg);
+                    transition: all 1s linear;
+                }
+
+                &:hover>i {
+                    animation: arrow_animation .33s linear alternate infinite;
+                }
+            }
+
+        }
+    }
+}
+
+@keyframes arrow_animation{
+    to{
+        transform: translateX(1vw) scale(1.05);
+    }
+    }
+
+
+.active{
+    background-color: white;
+}
+
+.active button{
+    color:black;
+}
